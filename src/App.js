@@ -1,12 +1,18 @@
+import { useState } from "react";
 import { ChatEngine } from "react-chat-engine";
 import LoginForm from './components/LoginForm'
 import ChatFeed from "./components/ChatFeed"
 
-import './App.css'
+import './App.css';
+
+import useToken from "./Hoks/useToken";
 
 
 const App = () => {
-    if (!localStorage.getItem('username')) return <LoginForm />
+    const [token] = useToken()
+
+
+    if (!token) return <LoginForm />
 
     return (
         <ChatEngine
