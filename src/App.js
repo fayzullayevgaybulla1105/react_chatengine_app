@@ -5,7 +5,7 @@ import ChatFeed from "./components/ChatFeed"
 
 import './App.css';
 
-import useToken from "./Hoks/useToken";
+import useToken from "./Hooks/useToken";
 
 
 const App = () => {

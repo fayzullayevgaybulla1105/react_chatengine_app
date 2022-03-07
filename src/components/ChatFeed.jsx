@@ -1,7 +1,7 @@
 import MessageForm from "./MessageForm";
 import TheirMessage from "./TheirMessage";
 import MyMessage from "./MyMessage";
-import useToken from '../Hoks/useToken'
+import useToken from '../Hooks/useToken'
 
 const ChatFeed = (props) => {
     const { chats, activeChat, username, messages } = props;
