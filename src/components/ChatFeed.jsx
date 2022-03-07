@@ -1,11 +1,12 @@
 import MessageForm from "./MessageForm";
 import TheirMessage from "./TheirMessage";
 import MyMessage from "./MyMessage";
+import useToken from '../Hoks/useToken'
 
 const ChatFeed = (props) => {
-
     const { chats, activeChat, username, messages } = props;
     const chat = chats && chats[activeChat];
+    const [token, setToken] = useToken()
 
     const renderReadReceipts = (message, isMyMessage) => {
         return chat.people.map((person, index) => person.last_read === message.id && (
@@ -54,12 +55,18 @@ const ChatFeed = (props) => {
 
     };
 
+    const handlerTokenRemove = () => {
+        setToken(false)
+    }
+
     // renderMessage()
-    if (!chat) return 'Loading....'
+    if (!chat) return 'Loading....';
+
 
     return (
         <div className="chat-feed">
             <div className="chat-title-container">
+                <button onClick={handlerTokenRemove}>Exit</button>
                 <div className="chat-title">
                     {chat?.title}
                 </div>

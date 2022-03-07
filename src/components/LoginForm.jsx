@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from 'axios'
 
+const projectID = '381ca48e-3681-4160-bc4e-a5e41affcb10';
 
 const LoginForm = () => {
     const [username, setUsername] = useState('');
@@ -8,11 +9,9 @@ const LoginForm = () => {
     const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
-
-
         e.preventDefault();
 
-        const authObject = { 'Project-ID': '381ca48e-3681-4160-bc4e-a5e41affcb10', 'User-Name': username, 'User-Secret': password }
+        const authObject = { 'Project-ID': projectID, 'User-Name': username, 'User-Secret': password }
 
         try {
             // username | password =>chat engine -> give messages
@@ -44,7 +43,7 @@ const LoginForm = () => {
                         </button>
                     </div>
                 </form>
-                <h2 className="error">{error}</h2>
+                <h2 >{error}</h2>
             </div>
         </div>
     )
