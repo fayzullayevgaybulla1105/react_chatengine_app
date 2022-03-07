@@ -8,13 +8,13 @@ const ChatFeed = (props) => {
     const chat = chats && chats[activeChat];
 
     const renderReadReceipts = (message, isMyMessage) => {
-       return chat.people.map((person, index) => person.last_read === message.id && (
+        return chat.people.map((person, index) => person.last_read === message.id && (
             <div
                 key={`read_${index}`}
                 className="read_receipt"
                 style={{
                     float: isMyMessage ? 'right' : 'left',
-                    backgroundImage: `url(${person?.person?.avatar})`
+                    backgroundImage: person.person.avatar && `url(${person?.person?.avatar})`
                 }}
             />
         ))
@@ -27,6 +27,7 @@ const ChatFeed = (props) => {
             const message = messages[key];
             const lastMessageKey = index === 0 ? null : keys[index - 1];//message bo`lmasa null qaytar, agar message bo`lsa uning indexini 1ga kamaytirib ber
             const isMyMessage = username === message.sender.username;
+
             return (
                 <div key={`msg_${index}`} style={{ width: '100%' }}>
                     <div className="message-block">
@@ -47,12 +48,13 @@ const ChatFeed = (props) => {
                     </div>
 
                 </div>
-            )
+            );
 
-        })
+        });
 
-    }
-    renderMessage()
+    };
+
+    // renderMessage()
     if (!chat) return 'Loading....'
 
     return (

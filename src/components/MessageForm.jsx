@@ -4,8 +4,8 @@ import { SendOutlined, PictureOutlined } from "@ant-design/icons"
 
 const MessageForm = (props) => {
 
-    const { chatId, creds } = props;
     const [value, setValue] = useState('');
+    const { chatId, creds } = props;
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -45,7 +45,7 @@ const MessageForm = (props) => {
                 multiple={false}
                 id="upload-button"
                 style={{ display: "none" }}
-                onChange={handleUpload}
+                onChange={handleUpload.bind(this)}
             />
             <button type="submit"
                 className="send-button">

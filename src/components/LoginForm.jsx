@@ -22,10 +22,11 @@ const LoginForm = () => {
             localStorage.setItem('password', password);
 
             window.location.reload();
+            setError('');
 
         } catch (error) {
             //error -> try with new username....
-            setError("OOPs, incorrect credentials")
+            setError("OOPs, incorrect credentials");
 
         }
     }
@@ -34,7 +35,7 @@ const LoginForm = () => {
         <div className="wrapper">
             <div className="form">
                 <h1 className="title">Chat application</h1>
-                <form action="" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="input" placeholder="Username" required />
                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" placeholder="Password" required />
                     <div align="center">
@@ -42,8 +43,8 @@ const LoginForm = () => {
                             <span>Start Chatting</span>
                         </button>
                     </div>
-                    <h2 className="error">{error}</h2>
                 </form>
+                <h2 className="error">{error}</h2>
             </div>
         </div>
     )
