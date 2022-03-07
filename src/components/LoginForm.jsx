@@ -5,6 +5,7 @@ import axios from 'axios'
 const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
 
@@ -15,7 +16,7 @@ const LoginForm = () => {
 
         try {
             // username | password =>chat engine -> give messages
-           await  axios.get('https://api.chatengine.io/chats', { headers: authObject });
+            await axios.get('https://api.chatengine.io/chats', { headers: authObject });
             // works out -> logged in
             localStorage.setItem('username', username);
             localStorage.setItem('password', password);
@@ -24,6 +25,7 @@ const LoginForm = () => {
 
         } catch (error) {
             //error -> try with new username....
+            setError("OOPs, incorrect credentials")
 
         }
     }
@@ -40,6 +42,7 @@ const LoginForm = () => {
                             <span>Start Chatting</span>
                         </button>
                     </div>
+                    <h2 className="error">{error}</h2>
                 </form>
             </div>
         </div>
