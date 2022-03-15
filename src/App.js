@@ -7,7 +7,7 @@ import './App.css';
 
 import useToken from "./Hooks/useToken";
 
-
+const projectID = "ce6001da-7a72-4bf7-b993-14aabe76a38c"
 const App = () => {
     const [token] = useToken()
 
@@ -17,10 +17,11 @@ const App = () => {
     return (
         <ChatEngine
             height='100vh'
-            projectID="381ca48e-3681-4160-bc4e-a5e41affcb10"
-            userName={localStorage.getItem('username') }
+            projectID={projectID}
+            userName={localStorage.getItem('username')}
             userSecret={localStorage.getItem('password')}
             renderChatFeed={(chatAppProps) => <ChatFeed{...chatAppProps} />}
+            onNewMessage={() => new Audio('https://chat-engine-assets.s3.amazonaws.com/click.mp3').play()}
         />
     )
 }

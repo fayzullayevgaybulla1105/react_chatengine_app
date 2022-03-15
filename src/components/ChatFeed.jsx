@@ -8,18 +8,17 @@ const ChatFeed = (props) => {
     const chat = chats && chats[activeChat];
     const [token, setToken] = useToken()
 
-    const renderReadReceipts = (message, isMyMessage) => {
-        return chat.people.map((person, index) => person.last_read === message.id && (
+    const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
             <div
                 key={`read_${index}`}
-                className="read_receipt"
+                className="read-receipt"
                 style={{
                     float: isMyMessage ? 'right' : 'left',
                     backgroundImage: person.person.avatar && `url(${person?.person?.avatar})`
                 }}
             />
         ))
-    }
+    
 
     const renderMessage = () => {
         const keys = Object.keys(messages);
@@ -66,7 +65,7 @@ const ChatFeed = (props) => {
     return (
         <div className="chat-feed">
             <div className="chat-title-container">
-                <button onClick={handlerTokenRemove}>Exit</button>
+                <button onClick={handlerTokenRemove} style={{ marginLeft: '100%', backgroundColor:'red', color:"white" }}>Exit</button>
                 <div className="chat-title">
                     {chat?.title}
                 </div>
@@ -81,8 +80,8 @@ const ChatFeed = (props) => {
                 <MessageForm {...props} chatId={activeChat} />
             </div>
         </div>
-    )
-}
+    );
+};
 
 
 export default ChatFeed;
